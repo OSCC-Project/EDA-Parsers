@@ -11,4 +11,10 @@ set(HOME_UTILITY ${PROJECT_SOURCE_DIR}/utility)
 set(HOME_THIRDPARTY ${PROJECT_SOURCE_DIR}/third_party)
 
 #parser settings
-set(HOME_PARSER ${PROJECT_SOURCE_DIR}/parser)
+option(USE_PARSER_RUST "whether use parser rust version" OFF)
+
+if (USE_PARSER_RUST)
+    set(HOME_PARSER ${PROJECT_SOURCE_DIR}/parser_rust)
+else ()
+    set(HOME_PARSER ${PROJECT_SOURCE_DIR}/parser)
+endif()

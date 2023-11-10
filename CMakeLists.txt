@@ -50,9 +50,19 @@ include_directories(${HOME_PARSER})
 
 add_subdirectory(third_party)
 add_subdirectory(utility)
-add_subdirectory(parser)
+
+if (USE_PARSER_RUST)
+    add_definitions(-DUSE_RUST)
+    add_subdirectory(parser_rust)
+else()
+    add_subdirectory(parser)
+endif()
 
 
 add_executable(iEDA-parser main.cc)
 
-target_link_libraries(iEDA-parser verilog-parser vcd-parser liberty stdc++fs)
+if (USE_PARSER_RUST)
+    target_link_libraries(iEDA-parser vcd-parser liberty spef verilog-parser stdc++fs)
+else()    
+    target_link_libraries(iEDA-parser verilog-parser vcd-parser liberty stdc++fs)
+endif()

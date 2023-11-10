@@ -42,8 +42,8 @@
 *P clk1 I
 *I r1:CK I *L 0.0036
 *CAP
-1 clk1 .243
-2 r1:CK .028
+1 clk1 0.243
+2 r1:CK 0.028
 *RES
 3 clk1 r1:CK 40
 *END

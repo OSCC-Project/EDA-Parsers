@@ -2,3 +2,7 @@
 
 bin
 build
+
+target/
+*-stamp/
+tmp/

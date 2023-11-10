@@ -2240,7 +2240,7 @@ char *yyget_text  (yyscan_t yyscanner)
     return yytext;
 }
 
-/** BTreeSet the user-defined data. This data is never touched by the scanner.
+/** Set the user-defined data. This data is never touched by the scanner.
  * @param user_defined The data to be associated with this scanner.
  * @param yyscanner The scanner object.
  */
@@ -2250,7 +2250,7 @@ void yyset_extra (YY_EXTRA_TYPE  user_defined , yyscan_t yyscanner)
     yyextra = user_defined ;
 }
 
-/** BTreeSet the current line number.
+/** Set the current line number.
  * @param _line_number line number
  * @param yyscanner The scanner object.
  */
@@ -2265,7 +2265,7 @@ void yyset_lineno (int  _line_number , yyscan_t yyscanner)
     yylineno = _line_number;
 }
 
-/** BTreeSet the current column.
+/** Set the current column.
  * @param _column_no column number
  * @param yyscanner The scanner object.
  */
@@ -2280,7 +2280,7 @@ void yyset_column (int  _column_no , yyscan_t yyscanner)
     yycolumn = _column_no;
 }
 
-/** BTreeSet the input stream. This does not discard the current
+/** Set the input stream. This does not discard the current
  * input buffer.
  * @param _in_str A readable stream.
  * @param yyscanner The scanner object.
@@ -2411,7 +2411,7 @@ static int yy_init_globals (yyscan_t yyscanner)
     yyout = NULL;
 #endif
 
-    /* For future reference: BTreeSet errno on error, since we are called by
+    /* For future reference: Set errno on error, since we are called by
      * yylex_init()
      */
     return 0;
