@@ -901,7 +901,7 @@ struct Action<RuleUnit>
   }
 };
 
-//  Name Map Section
+//  Name BTreeMap Section
 //  -------------------------------------------------------------------------------
 struct RuleNameMapBeg : pegtl::seq<TAO_PEGTL_STRING("*NAME_MAP"), RuleDontCare>
 {
@@ -975,7 +975,7 @@ struct Action<RulePort>
 
     d.ports.emplace_back(std::string{d._tokens[0]});
 
-    // Set up port direction
+    // BTreeSet up port direction
     switch (d._tokens[1][0]) {
       case 'O':
         d.ports.back().direction = ConnectionDirection::OUTPUT;
@@ -994,7 +994,7 @@ struct Action<RulePort>
     // TODO:
     // right now we ignore the values after port direction (future work)
 
-    //// Set up type
+    //// BTreeSet up type
     // if(d._tokens.size() > 2){
     //  p.type = d._tokens[2][1];
     //}

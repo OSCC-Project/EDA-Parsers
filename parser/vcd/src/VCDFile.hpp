@@ -122,7 +122,7 @@ class VCDFile {
   //! Vector of time values present in the VCD file - sorted, asc
   std::vector<VCDTime> times;
 
-  //! Map of hashes onto vectors of times and signal values.
+  //! BTreeMap of hashes onto vectors of times and signal values.
   std::unordered_map<VCDSignalHash, VCDSignalValues*> val_map;
 };
 

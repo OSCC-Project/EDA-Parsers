@@ -29,7 +29,7 @@
 #include <optional>
 #include <vector>
 
-#include "DisallowCopyAssign.hh"
+#include "ForbiddenCopy.hh"
 #include "string/Str.hh"
 
 using ieda::Str;
@@ -53,7 +53,7 @@ class SdfTripleValue
  private:
   std::array<std::optional<float>, 3> _triple_value;  //!< The triple value fast:typical:slow.
 
-  DISALLOW_COPY_AND_ASSIGN(SdfTripleValue);
+  FORBIDDEN_COPY(SdfTripleValue);
 };
 
 /**
@@ -217,7 +217,7 @@ class SdfReader
   unsigned _parse_timing_check : 1;
   unsigned _reserverd : 31;
 
-  DISALLOW_COPY_AND_ASSIGN(SdfReader);
+  FORBIDDEN_COPY(SdfReader);
 };
 
 }  // namespace ista

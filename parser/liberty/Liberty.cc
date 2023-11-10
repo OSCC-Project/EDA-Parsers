@@ -368,11 +368,11 @@ LibetyCurrentData::LibetyCurrentData(LibertyVectorTable* low_low, LibertyVectorT
  */
 std::tuple<double, int> LibetyCurrentData::getSimulationTotalTimeAndNumPoints()
 {
-  Map<double, int> total_simulation_times;
+  BTreeMap<double, int> total_simulation_times;
 
   for (auto* table : {_low_low, _low_high, _high_low, _high_high}) {
     auto [total_time, num_point] = table->getSimulationTotalTimeAndNumPoints();
-    total_simulation_times.insert(total_time, num_point);
+    total_simulation_times[total_time] = num_point;
   }
 
   auto it = std::min_element(std::begin(total_simulation_times), std::end(total_simulation_times));
@@ -670,7 +670,7 @@ LibertyPort& LibertyPort::operator=(LibertyPort&& rhs) noexcept
 }
 
 /**
- * @brief Set cap of max/min, rise/fall.
+ * @brief BTreeSet cap of max/min, rise/fall.
  *
  * @param mode
  * @param trans_type
@@ -720,7 +720,7 @@ std::optional<double> LibertyPort::get_port_cap(AnalysisMode mode, TransType tra
 }
 
 /**
- * @brief Set cap limit of max/min.
+ * @brief BTreeSet cap limit of max/min.
  *
  * @param mode
  * @param cap
@@ -752,7 +752,7 @@ std::optional<double> LibertyPort::get_port_cap_limit(AnalysisMode mode)
 }
 
 /**
- * @brief Set cap limit of max/min.
+ * @brief BTreeSet cap limit of max/min.
  *
  * @param mode
  * @param cap
@@ -886,42 +886,42 @@ LibertyLeakagePower& LibertyLeakagePower::operator=(LibertyLeakagePower&& rhs) n
   return *this;
 }
 
-const Map<std::string, LibertyArc::TimingType> LibertyArc::_str_to_type = {{"setup_rising", TimingType::kSetupRising},
-                                                                           {"hold_rising", TimingType::kHoldRising},
-                                                                           {"recovery_rising", TimingType::kRecoveryRising},
-                                                                           {"removal_rising", TimingType::kRemovalRising},
-                                                                           {"rising_edge", TimingType::kRisingEdge},
-                                                                           {"preset", TimingType::kPreset},
-                                                                           {"clear", TimingType::kClear},
-                                                                           {"three_state_enable", TimingType::kThreeStateEnable},
-                                                                           {"three_state_enable_rise", TimingType::kThreeStateEnableRise},
-                                                                           {"three_state_enable_fall", TimingType::kThreeStateEnableFall},
-                                                                           {"three_state_disable", TimingType::kThreeStateDisable},
-                                                                           {"three_state_disable_rise", TimingType::kThreeStateDisableRise},
-                                                                           {"three_state_disable_fall", TimingType::kThreeStateDisableFall},
-                                                                           {"setup_falling", TimingType::kSetupFalling},
-                                                                           {"hold_falling", TimingType::kHoldFalling},
-                                                                           {"recovery_falling", TimingType::kRecoveryFalling},
-                                                                           {"removal_falling", TimingType::kRemovalFalling},
-                                                                           {"falling_edge", TimingType::kFallingEdge},
-                                                                           {"min_pulse_width", TimingType::kMinPulseWidth},
-                                                                           {"combinational", TimingType::kComb},
-                                                                           {"combinational_rise", TimingType::kCombRise},
-                                                                           {"combinational_fall", TimingType::kCombFall},
-                                                                           {"non_seq_setup_rising", TimingType::kNonSeqSetupRising},
-                                                                           {"non_seq_setup_falling", TimingType::kNonSeqSetupFalling},
-                                                                           {"non_seq_hold_falling", TimingType::kNonSeqHoldFalling},
-                                                                           {"non_seq_hold_rising", TimingType::kNonSeqHoldRising},
-                                                                           {"non_seq_hold_falling", TimingType::kNonSeqHoldFalling},
-                                                                           {"skew_rising", TimingType::kSkewRising},
-                                                                           {"skew_falling", TimingType::kSkewFalling},
-                                                                           {"minimum_period", TimingType::kMinimunPeriod},
-                                                                           {"max_clock_tree_path", TimingType::kMaxClockTree},
-                                                                           {"min_clock_tree_path", TimingType::kMinClockTree},
-                                                                           {"nochange_high_high", TimingType::kNoChangeHighHigh},
-                                                                           {"nochange_high_low", TimingType::kNoChangeHighLow},
-                                                                           {"nochange_low_high", TimingType::kNoChangeLowHigh},
-                                                                           {"nochange_low_low", TimingType::kNoChangeLowLow}};
+BTreeMap<std::string, LibertyArc::TimingType> LibertyArc::_str_to_type = {{"setup_rising", TimingType::kSetupRising},
+                                                                          {"hold_rising", TimingType::kHoldRising},
+                                                                          {"recovery_rising", TimingType::kRecoveryRising},
+                                                                          {"removal_rising", TimingType::kRemovalRising},
+                                                                          {"rising_edge", TimingType::kRisingEdge},
+                                                                          {"preset", TimingType::kPreset},
+                                                                          {"clear", TimingType::kClear},
+                                                                          {"three_state_enable", TimingType::kThreeStateEnable},
+                                                                          {"three_state_enable_rise", TimingType::kThreeStateEnableRise},
+                                                                          {"three_state_enable_fall", TimingType::kThreeStateEnableFall},
+                                                                          {"three_state_disable", TimingType::kThreeStateDisable},
+                                                                          {"three_state_disable_rise", TimingType::kThreeStateDisableRise},
+                                                                          {"three_state_disable_fall", TimingType::kThreeStateDisableFall},
+                                                                          {"setup_falling", TimingType::kSetupFalling},
+                                                                          {"hold_falling", TimingType::kHoldFalling},
+                                                                          {"recovery_falling", TimingType::kRecoveryFalling},
+                                                                          {"removal_falling", TimingType::kRemovalFalling},
+                                                                          {"falling_edge", TimingType::kFallingEdge},
+                                                                          {"min_pulse_width", TimingType::kMinPulseWidth},
+                                                                          {"combinational", TimingType::kComb},
+                                                                          {"combinational_rise", TimingType::kCombRise},
+                                                                          {"combinational_fall", TimingType::kCombFall},
+                                                                          {"non_seq_setup_rising", TimingType::kNonSeqSetupRising},
+                                                                          {"non_seq_setup_falling", TimingType::kNonSeqSetupFalling},
+                                                                          {"non_seq_hold_falling", TimingType::kNonSeqHoldFalling},
+                                                                          {"non_seq_hold_rising", TimingType::kNonSeqHoldRising},
+                                                                          {"non_seq_hold_falling", TimingType::kNonSeqHoldFalling},
+                                                                          {"skew_rising", TimingType::kSkewRising},
+                                                                          {"skew_falling", TimingType::kSkewFalling},
+                                                                          {"minimum_period", TimingType::kMinimunPeriod},
+                                                                          {"max_clock_tree_path", TimingType::kMaxClockTree},
+                                                                          {"min_clock_tree_path", TimingType::kMinClockTree},
+                                                                          {"nochange_high_high", TimingType::kNoChangeHighHigh},
+                                                                          {"nochange_high_low", TimingType::kNoChangeHighLow},
+                                                                          {"nochange_low_high", TimingType::kNoChangeLowHigh},
+                                                                          {"nochange_low_low", TimingType::kNoChangeLowLow}};
 
 LibertyArc::LibertyArc() : _owner_cell(nullptr), _timing_sense(TimingSense::kDefault), _timing_type(TimingType::kDefault)
 {
@@ -957,7 +957,7 @@ LibertyArc& LibertyArc::operator=(LibertyArc&& rhs) noexcept
 }
 
 /**
- * @brief Set arc timing sense.
+ * @brief BTreeSet arc timing sense.
  *
  * @param timing_sense
  */
@@ -973,13 +973,17 @@ void LibertyArc::set_timing_sense(const char* timing_sense)
 }
 
 /**
- * @brief Set arc timing type.
+ * @brief BTreeSet arc timing type.
  *
  * @param timing_type
  */
-void LibertyArc::set_timing_type(const std::string& timing_type)
+void LibertyArc::set_timing_type(std::string& timing_type)
 {
-  _timing_type = _str_to_type.value(timing_type, TimingType::kDefault);
+  if (_str_to_type.count(timing_type)) {
+    _timing_type = _str_to_type[timing_type];
+  } else {
+    _timing_type = TimingType::kDefault;
+  }
 }
 
 /**
@@ -2482,7 +2486,7 @@ unsigned LibertyReader::visitSimpleAttri(LibertyStmt* attri)
           }},
          {"timing_type",
           [=]() {
-            const char* timing_type = attri_value->getStringValue();
+            std::string timing_type = attri_value->getStringValue();
             lib_arc->set_timing_type(timing_type);
           }},
          {"variable_1",
@@ -2667,9 +2671,9 @@ unsigned LibertyReader::visitGroup(LibertyStmt* group)
   unsigned is_ok = 1;
   const char* group_name = the_group->get_group_name();
 
-  static const Set<std::string> table_names
+  static const BTreeSet<std::string> table_names
       = {"cell_rise", "cell_fall", "rise_transition", "fall_transition", "rise_constraint", "fall_constraint"};
-  static const Set<std::string> power_table_names = {"rise_power", "fall_power"};
+  static const BTreeSet<std::string> power_table_names = {"rise_power", "fall_power"};
 
   using std::placeholders::_1;
 
@@ -2693,9 +2697,9 @@ unsigned LibertyReader::visitGroup(LibertyStmt* group)
   if (visit_fun_map.contains(group_name)) {
     auto read_func = visit_fun_map[group_name];
     is_ok = read_func(group);
-  } else if (table_names.hasKey(group_name)) {
+  } else if (table_names.count(group_name)) {
     is_ok = visitTable(group);
-  } else if (power_table_names.hasKey(group_name)) {
+  } else if (power_table_names.count(group_name)) {
     is_ok = visitPowerTable(group);
   }
 

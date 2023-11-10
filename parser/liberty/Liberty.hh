@@ -33,11 +33,11 @@
 #include <vector>
 
 #include "Array.hh"
-#include "DisallowCopyAssign.hh"
-#include "HashMap.hh"
-#include "HashSet.hh"
+#include "BTreeMap.hh"
+#include "FlatMap.hh"
+#include "FlatSet.hh"
+#include "ForbiddenCopy.hh"
 #include "LibertyExpr.hh"
-#include "Map.hh"
 #include "Vector.hh"
 #include "log/Log.hh"
 #include "string/Str.hh"
@@ -45,12 +45,12 @@
 
 namespace ieda {
 
-using ieda::HashMap;
-using ieda::HashSet;
+using ieda::BTreeMap;
+using ieda::BTreeSet;
+using ieda::FlatMap;
+using ieda::FlatSet;
 using ieda::Log;
-using ieda::Map;
 using ieda::Multimap;
-using ieda::Set;
 using ieda::Str;
 using ieda::StrMap;
 using ieda::Vector;
@@ -166,7 +166,7 @@ class LibertyObject
   std::string _file_name;
   unsigned _line_no = 0;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyObject);
+  FORBIDDEN_COPY(LibertyObject);
 };
 
 /**
@@ -196,7 +196,7 @@ class LibertyAxis : public LibertyObject
 
   std::vector<std::unique_ptr<LibertyAttrValue>> _axis_values;  //!< The axis sample values.
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyAxis);
+  FORBIDDEN_COPY(LibertyAxis);
 };
 
 /**
@@ -256,7 +256,7 @@ class LibertyTable : public LibertyObject
 
   LibertyLutTableTemplate* _table_template;  //!< The lut template.
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyTable);
+  FORBIDDEN_COPY(LibertyTable);
 };
 
 /**
@@ -300,7 +300,7 @@ class LibertyVectorTable : public LibertyTable
  private:
   double _ref_time = 0.0;  //!< The current reference time.
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyVectorTable);
+  FORBIDDEN_COPY(LibertyVectorTable);
 };
 
 /**
@@ -358,7 +358,7 @@ class LibertyCCSTable : public LibertyObject
   LibertyTable::TableType _table_type;                              //!< The table type.
   std::vector<std::unique_ptr<LibertyVectorTable>> _vector_tables;  //!< The current tables.
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyCCSTable);
+  FORBIDDEN_COPY(LibertyCCSTable);
 };
 
 #define STR_TO_TABLE_TYPE(str) LibertyTable::_str2TableType.at(str)
@@ -408,7 +408,7 @@ class LibertyTableModel : public LibertyObject
   }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(LibertyTableModel);
+  FORBIDDEN_COPY(LibertyTableModel);
 };
 
 #define CAST_TYPE_TO_INDEX(type) ((static_cast<int>(type) > 3) ? (static_cast<int>(type) - 4) : static_cast<int>(type))
@@ -462,7 +462,7 @@ class LibertyDelayTableModel final : public LibertyTableModel
              kCurrentTableNum>  // Output current rise/fall.
       _current_tables;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyDelayTableModel);
+  FORBIDDEN_COPY(LibertyDelayTableModel);
 };
 
 /**
@@ -495,7 +495,7 @@ class LibertyCheckTableModel final : public LibertyTableModel
  private:
   std::array<std::unique_ptr<LibertyTable>, kTableNum> _tables;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyCheckTableModel);
+  FORBIDDEN_COPY(LibertyCheckTableModel);
 };
 
 /**
@@ -526,7 +526,7 @@ class LibertyPowerTableModel final : public LibertyTableModel
 
  private:
   std::array<std::unique_ptr<LibertyTable>, kTableNum> _tables;  // power table,include rise power/fall power.
-  DISALLOW_COPY_AND_ASSIGN(LibertyPowerTableModel);
+  FORBIDDEN_COPY(LibertyPowerTableModel);
 };
 
 /**
@@ -668,7 +668,7 @@ class LibertyPort : public LibertyObject
 
   Vector<std::unique_ptr<LibertyInternalPowerInfo>> _internal_powers;  //!< The internal power information.
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyPort);
+  FORBIDDEN_COPY(LibertyPort);
 };
 
 /**
@@ -752,7 +752,7 @@ class LibertyPortBus : public LibertyPort
   Vector<std::unique_ptr<LibertyPort>> _ports;  //!< The bus ports.
   LibertyType* _bus_type = nullptr;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyPortBus);
+  FORBIDDEN_COPY(LibertyPortBus);
 };
 
 /**
@@ -784,7 +784,7 @@ class LibertyLeakagePower : public LibertyObject
   double _value;                 //!< The value of the leakage power.
   LibertyCell* _owner_cell;      //!< The cell owner the port.
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyLeakagePower);
+  FORBIDDEN_COPY(LibertyLeakagePower);
 };
 
 /**
@@ -860,7 +860,7 @@ class LibertyArc : public LibertyObject
   void set_timing_sense(const char* timing_sense);
   TimingSense get_timing_sense() { return _timing_sense; }
 
-  void set_timing_type(const std::string& timing_type);
+  void set_timing_type(std::string& timing_type);
   TimingType get_timing_type() { return _timing_type; }
   bool isMatchTimingType(TransType trans_type);
 
@@ -929,9 +929,9 @@ class LibertyArc : public LibertyObject
 
   std::unique_ptr<LibertyTableModel> _table_model;  //!< The arc timing model.
 
-  static const Map<std::string, TimingType> _str_to_type;
+  static BTreeMap<std::string, TimingType> _str_to_type;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyArc);
+  FORBIDDEN_COPY(LibertyArc);
 };
 
 /**
@@ -955,7 +955,7 @@ class LibertyArcSet
  private:
   Vector<std::unique_ptr<LibertyArc>> _arcs;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyArcSet);
+  FORBIDDEN_COPY(LibertyArcSet);
 };
 
 /**
@@ -1008,7 +1008,7 @@ class LibertyPowerArc : public LibertyObject
 
   std::unique_ptr<LibertyInternalPowerInfo> _internal_power_info;  //!< The internal power information.
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyPowerArc);
+  FORBIDDEN_COPY(LibertyPowerArc);
 };
 
 /**
@@ -1032,7 +1032,7 @@ class LibertyPowerArcSet
  private:
   Vector<std::unique_ptr<LibertyPowerArc>> _power_arcs;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyPowerArcSet);
+  FORBIDDEN_COPY(LibertyPowerArcSet);
 };
 
 /**
@@ -1157,7 +1157,7 @@ class LibertyCell : public LibertyObject
   unsigned _is_macro_cell : 1 = 0;
   unsigned _reserved : 30;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyCell);
+  FORBIDDEN_COPY(LibertyCell);
 };
 
 /**
@@ -1177,7 +1177,7 @@ class LibertyCellPortIterator
   LibertyCell* _lib_cell;
   std::vector<std::unique_ptr<LibertyPort>>::iterator _iter;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyCellPortIterator);
+  FORBIDDEN_COPY(LibertyCellPortIterator);
 };
 
 /**
@@ -1222,7 +1222,7 @@ class LibertyCellTimingArcSetIterator
   LibertyCell* _lib_cell;
   std::vector<std::unique_ptr<LibertyArcSet>>::iterator _iter;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyCellTimingArcSetIterator);
+  FORBIDDEN_COPY(LibertyCellTimingArcSetIterator);
 };
 
 /**
@@ -1256,7 +1256,7 @@ class LibertyCellPowerArcSetIterator
 
   std::vector<std::unique_ptr<LibertyPowerArcSet>>::iterator _iter;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyCellPowerArcSetIterator);
+  FORBIDDEN_COPY(LibertyCellPowerArcSetIterator);
 };
 
 /**
@@ -1380,7 +1380,7 @@ class LibertyLutTableTemplate : public LibertyObject
 
   Vector<std::unique_ptr<LibertyAxis>> _axes;  //!< May be zero, one, two, three axes.
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyLutTableTemplate);
+  FORBIDDEN_COPY(LibertyLutTableTemplate);
 };
 
 /**
@@ -1405,7 +1405,7 @@ class LibertyCurrentTemplate : public LibertyLutTableTemplate
  private:
   std::unique_ptr<LibertyAxis> _template_axis;  //!< The time index template.
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyCurrentTemplate);
+  FORBIDDEN_COPY(LibertyCurrentTemplate);
 };
 
 /**
@@ -1432,7 +1432,7 @@ class LibertyLibrary
 
   void addLibertyCell(std::unique_ptr<LibertyCell> lib_cell)
   {
-    _str2cell.insert(lib_cell->get_cell_name(), lib_cell.get());
+    _str2cell[lib_cell->get_cell_name()] = lib_cell.get();
     _cells.emplace_back(std::move(lib_cell));
   }
 
@@ -1447,7 +1447,7 @@ class LibertyLibrary
 
   void addLutTemplate(std::unique_ptr<LibertyLutTableTemplate> lut_template)
   {
-    _str2template.insert(lut_template->get_template_name(), lut_template.get());
+    _str2template[lut_template->get_template_name()] = lut_template.get();
     _lut_templates.emplace_back(std::move(lut_template));
   }
 
@@ -1462,7 +1462,7 @@ class LibertyLibrary
 
   void addLibType(std::unique_ptr<LibertyType> lib_type)
   {
-    _str2type.insert(lib_type->get_type_name(), lib_type.get());
+    _str2type[lib_type->get_type_name()] = lib_type.get();
     _types.emplace_back(std::move(lib_type));
   }
 
@@ -1477,7 +1477,7 @@ class LibertyLibrary
 
   void addWireLoad(std::unique_ptr<LibertyWireLoad> wire_load)
   {
-    _str2wireLoad.insert(wire_load->get_wire_load_name(), wire_load.get());
+    _str2wireLoad[wire_load->get_wire_load_name()] = wire_load.get();
     _wire_loads.emplace_back(std::move(wire_load));
   }
 
@@ -1618,7 +1618,7 @@ class LibertyLibrary
   // characterization trip points.
   double _slew_derate_from_library = 1.0;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyLibrary);
+  FORBIDDEN_COPY(LibertyLibrary);
 };
 
 /**
@@ -1638,7 +1638,7 @@ class LibertyCellIterator
   LibertyLibrary* _lib;
   std::vector<std::unique_ptr<LibertyCell>>::iterator _iter;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyCellIterator);
+  FORBIDDEN_COPY(LibertyCellIterator);
 };
 
 /**
@@ -1678,7 +1678,7 @@ class LibertyStmt
   std::string _file_name;
   unsigned _line_no = 0;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyStmt);
+  FORBIDDEN_COPY(LibertyStmt);
 };
 
 /**
@@ -1770,7 +1770,7 @@ class LibertySimpleAttrStmt : public LibertyStmt
   std::string _attri_name;
   std::unique_ptr<LibertyAttrValue> _attribute_value;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertySimpleAttrStmt);
+  FORBIDDEN_COPY(LibertySimpleAttrStmt);
 };
 
 /**
@@ -1803,7 +1803,7 @@ class LibertyComplexAttrStmt : public LibertyStmt
   std::string _attri_name;
   std::vector<std::unique_ptr<LibertyAttrValue>> _attri_values;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyComplexAttrStmt);
+  FORBIDDEN_COPY(LibertyComplexAttrStmt);
 };
 
 /**
@@ -1843,7 +1843,7 @@ class LibertyGroupStmt : public LibertyStmt
   std::vector<std::unique_ptr<LibertyAttrValue>> _attri_values;
   std::vector<std::unique_ptr<LibertyStmt>> _stmts;
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyGroupStmt);
+  FORBIDDEN_COPY(LibertyGroupStmt);
 };
 
 /**
@@ -1925,7 +1925,7 @@ class LibertyBuilder
   LibertyOwnPortType _own_port_type;              //!< The flag of port own timing arc or power arc.
   LibertyOwnPgOrWhenType _own_pg_or_when_type;    //!< The flag of pg port/when own leakage power
                                                   //!< or power arc.
-  DISALLOW_COPY_AND_ASSIGN(LibertyBuilder);
+  FORBIDDEN_COPY(LibertyBuilder);
 };
 
 /**
@@ -1994,7 +1994,7 @@ class LibertyReader
   std::string _string_buf;   //!< For flex record inner string.
   void* _scanner = nullptr;  //!< The flex scanner.
 
-  DISALLOW_COPY_AND_ASSIGN(LibertyReader);
+  FORBIDDEN_COPY(LibertyReader);
 };
 
 /**
@@ -2010,7 +2010,7 @@ class Liberty
   std::unique_ptr<LibertyLibrary> loadLiberty(const char* file_name);
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(Liberty);
+  FORBIDDEN_COPY(Liberty);
 };
 
 }  // namespace ieda

@@ -2405,7 +2405,7 @@ char* yyget_text(void)
   return yytext;
 }
 
-/** Set the current line number.
+/** BTreeSet the current line number.
  * @param _line_number line number
  *
  */
@@ -2414,7 +2414,7 @@ void yyset_lineno(int _line_number)
   yylineno = _line_number;
 }
 
-/** Set the input stream. This does not discard the current
+/** BTreeSet the input stream. This does not discard the current
  * input buffer.
  * @param _in_str A readable stream.
  *
@@ -2462,7 +2462,7 @@ static int yy_init_globals(void)
   yyout = NULL;
 #endif
 
-  /* For future reference: Set errno on error, since we are called by
+  /* For future reference: BTreeSet errno on error, since we are called by
    * yylex_init()
    */
   return 0;

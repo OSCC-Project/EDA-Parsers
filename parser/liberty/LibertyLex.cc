@@ -1,6 +1,6 @@
-#line 2 "/home/linxiaoze/parser/parser/liberty/LibertyLex.cc"
+#line 2 "/home/taosimin/parser/parser/liberty/LibertyLex.cc"
 
-#line 4 "/home/linxiaoze/parser/parser/liberty/LibertyLex.cc"
+#line 4 "/home/taosimin/parser/parser/liberty/LibertyLex.cc"
 
 #define  YY_INT_ALIGNED short int
 
@@ -805,8 +805,23 @@ static const flex_int16_t yy_chk[557] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
-#line 2 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 1 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
+#line 2 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
+// OpenSTA, Static Timing Analyzer
+// Copyright (c) 2021, Parallax Software, Inc.
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include <ctype.h>
 #include <string>
@@ -821,7 +836,7 @@ static const flex_int16_t yy_chk[557] =
 #define YYSTYPE LIB_STYPE
 
 
-#line 825 "/home/linxiaoze/parser/parser/liberty/LibertyLex.cc"
+#line 840 "/home/taosimin/parser/parser/liberty/LibertyLex.cc"
 /* %option debug */
 
 /* ocv_table_template(2D_ocv_template) */
@@ -830,7 +845,7 @@ static const flex_int16_t yy_chk[557] =
 /* revision : 1.0.17; */
 /* default_wire_load : xc2v250-5_avg; */
 /* bus_naming_style : %s[%d] ; */
-#line 834 "/home/linxiaoze/parser/parser/liberty/LibertyLex.cc"
+#line 849 "/home/taosimin/parser/parser/liberty/LibertyLex.cc"
 
 #define INITIAL 0
 #define comment 1
@@ -1104,15 +1119,15 @@ YY_DECL
 		}
 
 	{
-#line 53 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 68 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 
 
 
-#line 57 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 72 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 yylval = yylval_param;
 
 
-#line 1116 "/home/linxiaoze/parser/parser/liberty/LibertyLex.cc"
+#line 1131 "/home/taosimin/parser/parser/liberty/LibertyLex.cc"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1167,13 +1182,13 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 60 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 75 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 { return ((int) yytext[0]); }
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 62 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 77 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
     /* Push back the TOKEN_END character. */
     yyless(yyleng - 1);
@@ -1185,7 +1200,7 @@ YY_RULE_SETUP
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 70 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 85 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
     /* Push back the TOKEN_END character. */
     yyless(yyleng - 1);
@@ -1195,26 +1210,26 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 /* rule 4 can match eol */
-#line 78 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 93 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 case 5:
 /* rule 5 can match eol */
-#line 79 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 94 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 case 6:
 /* rule 6 can match eol */
-#line 80 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 95 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 case 7:
 /* rule 7 can match eol */
-#line 81 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 96 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 case 8:
 /* rule 8 can match eol */
-#line 82 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 97 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 case 9:
 /* rule 9 can match eol */
-#line 83 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 98 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 case 10:
 /* rule 10 can match eol */
 YY_RULE_SETUP
-#line 83 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 98 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
     /* Push back the TOKEN_END character. */
     yyless(yyleng - 1);
@@ -1225,12 +1240,12 @@ YY_RULE_SETUP
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 90 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 105 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 { lib_reader->incrLineNo(); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 92 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 107 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
 
     /*Support the include file TODO*/
@@ -1239,34 +1254,34 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 98 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 113 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 BEGIN(comment);
 	YY_BREAK
 /* Straight out of the flex man page. */
 case 14:
 YY_RULE_SETUP
-#line 101 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 116 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 /* eat anything that's not a '*' */
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 102 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 117 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 /* eat up '*'s not followed by '/'s */
 	YY_BREAK
 case 16:
 /* rule 16 can match eol */
 YY_RULE_SETUP
-#line 103 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 118 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 lib_reader->incrLineNo();
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 104 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 119 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 BEGIN(INITIAL);
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 106 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 121 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
     lib_reader->clearRecordStr();
     BEGIN(qstring);
@@ -1274,7 +1289,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 111 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 126 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
     BEGIN(INITIAL);
     yylval->string = lib_reader->stringCopy(lib_reader->get_record_str());
@@ -1284,7 +1299,7 @@ YY_RULE_SETUP
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
-#line 117 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 132 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
     BEGIN(INITIAL);
     yylval->string = lib_reader->stringCopy(lib_reader->get_record_str());;
@@ -1294,7 +1309,7 @@ YY_RULE_SETUP
 case 21:
 /* rule 21 can match eol */
 YY_RULE_SETUP
-#line 123 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 138 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
     /* Line continuation. */
     lib_reader->incrLineNo();
@@ -1302,7 +1317,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 128 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 143 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
     /* Escaped character. */
     lib_reader->recordStr("\\");
@@ -1311,14 +1326,14 @@ YY_RULE_SETUP
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 134 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 149 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
     /* Anything but escape, return or double quote */
     lib_reader->recordStr(yytext);
     }
 	YY_BREAK
 case YY_STATE_EOF(qstring):
-#line 139 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 154 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
     BEGIN(INITIAL);
     yyterminate();
@@ -1326,18 +1341,18 @@ case YY_STATE_EOF(qstring):
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 144 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 159 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {}
 	YY_BREAK
 /* Send out of bound characters to parser. */
 case 25:
 YY_RULE_SETUP
-#line 146 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 161 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 { return (int) yytext[0]; }
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(comment):
-#line 148 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 163 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 {
 
     yyterminate();
@@ -1345,10 +1360,10 @@ case YY_STATE_EOF(comment):
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 153 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 168 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 ECHO;
 	YY_BREAK
-#line 1352 "/home/linxiaoze/parser/parser/liberty/LibertyLex.cc"
+#line 1367 "/home/taosimin/parser/parser/liberty/LibertyLex.cc"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2225,7 +2240,7 @@ char *yyget_text  (yyscan_t yyscanner)
     return yytext;
 }
 
-/** Set the user-defined data. This data is never touched by the scanner.
+/** BTreeSet the user-defined data. This data is never touched by the scanner.
  * @param user_defined The data to be associated with this scanner.
  * @param yyscanner The scanner object.
  */
@@ -2235,7 +2250,7 @@ void yyset_extra (YY_EXTRA_TYPE  user_defined , yyscan_t yyscanner)
     yyextra = user_defined ;
 }
 
-/** Set the current line number.
+/** BTreeSet the current line number.
  * @param _line_number line number
  * @param yyscanner The scanner object.
  */
@@ -2250,7 +2265,7 @@ void yyset_lineno (int  _line_number , yyscan_t yyscanner)
     yylineno = _line_number;
 }
 
-/** Set the current column.
+/** BTreeSet the current column.
  * @param _column_no column number
  * @param yyscanner The scanner object.
  */
@@ -2265,7 +2280,7 @@ void yyset_column (int  _column_no , yyscan_t yyscanner)
     yycolumn = _column_no;
 }
 
-/** Set the input stream. This does not discard the current
+/** BTreeSet the input stream. This does not discard the current
  * input buffer.
  * @param _in_str A readable stream.
  * @param yyscanner The scanner object.
@@ -2396,7 +2411,7 @@ static int yy_init_globals (yyscan_t yyscanner)
     yyout = NULL;
 #endif
 
-    /* For future reference: Set errno on error, since we are called by
+    /* For future reference: BTreeSet errno on error, since we are called by
      * yylex_init()
      */
     return 0;
@@ -2490,7 +2505,7 @@ void yyfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 153 "/home/linxiaoze/parser/parser/liberty/LibertyLex.l"
+#line 168 "/home/taosimin/parser/parser/liberty/LibertyLex.l"
 
 namespace  ieda {
 
@@ -2515,3 +2530,4 @@ namespace  ieda {
    }
 
 }
+

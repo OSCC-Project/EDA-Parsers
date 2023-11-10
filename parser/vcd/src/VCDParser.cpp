@@ -76,7 +76,7 @@ VCDTime current_time = 0;
 #endif
 
 #define YYRHSLOC(Rhs, K) ((Rhs)[K].location)
-/* YYLLOC_DEFAULT -- Set CURRENT to span from RHS[1] to RHS[N].
+/* YYLLOC_DEFAULT -- BTreeSet CURRENT to span from RHS[1] to RHS[N].
    If N is 0, then set CURRENT to the empty location which ends
    the previous symbol: RHS[0] (always defined).  */
 

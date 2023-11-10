@@ -19,14 +19,14 @@
 #include <unordered_map>
 
 #include "Liberty.hh"
-#include "Map.hh"
+#include "BTreeMap.hh"
 #include "Vector.hh"
 
 namespace ieda {
 
 using LibertyCellSeq = Vector<LibertyCell*>;
-using EquivCellMap = ieda::Map<LibertyCell*, LibertyCellSeq*>;
-using LibertyCellHashMap = std::unordered_map<unsigned, LibertyCellSeq*>;
+using EquivCellMap = ieda::BTreeMap<LibertyCell*, LibertyCellSeq*>;
+using LibertyCellFlatMap = std::unordered_map<unsigned, LibertyCellSeq*>;
 
 // Predicate that is true when the ports, functions, sequentials and
 // timing arcs match.
@@ -56,8 +56,8 @@ class LibertyEquivCells
   LibertyCellSeq* equivs(LibertyCell* cell);
 
  protected:
-  void findEquivCells(LibertyLibrary* library, LibertyCellHashMap& hash_matches);
-  void mapEquivCells(LibertyLibrary* library, LibertyCellHashMap& hash_matches);
+  void findEquivCells(LibertyLibrary* library, LibertyCellFlatMap& hash_matches);
+  void mapEquivCells(LibertyLibrary* library, LibertyCellFlatMap& hash_matches);
 
   EquivCellMap _equiv_cells;
   // Unique cell for each equiv cell group.

@@ -194,7 +194,7 @@ bool equivCellTimingArcSets(LibertyCell* cell1, LibertyCell* cell2)
 
 LibertyEquivCells::LibertyEquivCells(std::vector<LibertyLibrary*>& equiv_libs, std::vector<LibertyLibrary*>& map_libs)
 {
-  LibertyCellHashMap hash_matches;
+  LibertyCellFlatMap hash_matches;
   for (auto* lib : equiv_libs) {
     findEquivCells(lib, hash_matches);
   }
@@ -228,7 +228,7 @@ LibertyCellSeq* LibertyEquivCells::equivs(LibertyCell* cell)
 
 // Use a comprehensive hash on cell properties to segregate
 // cells into groups of potential matches.
-void LibertyEquivCells::findEquivCells(LibertyLibrary* library, LibertyCellHashMap& hash_matches)
+void LibertyEquivCells::findEquivCells(LibertyLibrary* library, LibertyCellFlatMap& hash_matches)
 {
   LibertyCellIterator cell_iter(library);
   while (cell_iter.hasNext()) {
@@ -261,8 +261,8 @@ void LibertyEquivCells::findEquivCells(LibertyLibrary* library, LibertyCellHashM
   }
 }
 
-// Map library cells to equiv cells.
-void LibertyEquivCells::mapEquivCells(LibertyLibrary* library, LibertyCellHashMap& hash_matches)
+// BTreeMap library cells to equiv cells.
+void LibertyEquivCells::mapEquivCells(LibertyLibrary* library, LibertyCellFlatMap& hash_matches)
 {
   LibertyCellIterator cell_iter(library);
   while (cell_iter.hasNext()) {

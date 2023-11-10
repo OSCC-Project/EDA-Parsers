@@ -44,11 +44,11 @@
 #include <cstdlib>
 #include <map>
 
-#include "DisallowCopyAssign.hh"
-#include "HashMap.hh"
-#include "HashSet.hh"
-#include "Map.hh"
-#include "Set.hh"
+#include "BTreeMap.hh"
+#include "BTreeSet.hh"
+#include "FlatMap.hh"
+#include "FlatSet.hh"
+#include "ForbiddenCopy.hh"
 #include "Vector.hh"
 #include "log/Log.hh"
 #include "string/Str.hh"

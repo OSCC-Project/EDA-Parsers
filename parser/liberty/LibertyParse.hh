@@ -1,8 +1,9 @@
-/* A Bison parser, made by GNU Bison 3.0.4.  */
+/* A Bison parser, made by GNU Bison 3.5.1.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015 Free Software Foundation, Inc.
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
+   Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,8 +31,11 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-#ifndef YY_LIB_HOME_LINXIAOZE_PARSER_PARSER_LIBERTY_LIBERTYPARSE_HH_INCLUDED
-# define YY_LIB_HOME_LINXIAOZE_PARSER_PARSER_LIBERTY_LIBERTYPARSE_HH_INCLUDED
+/* Undocumented macros, especially those whose name start with YY_,
+   are private implementation details.  Do not rely on them.  */
+
+#ifndef YY_LIB_HOME_TAOSIMIN_PARSER_PARSER_LIBERTY_LIBERTYPARSE_HH_INCLUDED
+# define YY_LIB_HOME_TAOSIMIN_PARSER_PARSER_LIBERTY_LIBERTYPARSE_HH_INCLUDED
 /* Debug traces.  */
 #ifndef LIB_DEBUG
 # if defined YYDEBUG
@@ -48,9 +52,23 @@
 extern int lib_debug;
 #endif
 /* "%code requires" blocks.  */
-#line 1 "/home/linxiaoze/parser/parser/liberty/LibertyParse.y" /* yacc.c:1909  */
+#line 1 "/home/taosimin/parser/parser/liberty/LibertyParse.y"
 
-
+// OpenSTA, Static Timing Analyzer
+// Copyright (c) 2021, Parallax Software, Inc.
+// 
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
 #include "Liberty.hh"
@@ -69,7 +87,7 @@ using namespace ieda;
 typedef void* yyscan_t;
 
 
-#line 73 "/home/linxiaoze/parser/parser/liberty/LibertyParse.hh" /* yacc.c:1909  */
+#line 91 "/home/taosimin/parser/parser/liberty/LibertyParse.hh"
 
 /* Token type.  */
 #ifndef LIB_TOKENTYPE
@@ -84,19 +102,18 @@ typedef void* yyscan_t;
 
 /* Value type.  */
 #if ! defined LIB_STYPE && ! defined LIB_STYPE_IS_DECLARED
-
 union LIB_STYPE
 {
-#line 30 "/home/linxiaoze/parser/parser/liberty/LibertyParse.y" /* yacc.c:1909  */
+#line 44 "/home/taosimin/parser/parser/liberty/LibertyParse.y"
 
   char *string;
   float number;
   int line;
   void* obj;
 
-#line 98 "/home/linxiaoze/parser/parser/liberty/LibertyParse.hh" /* yacc.c:1909  */
-};
+#line 115 "/home/taosimin/parser/parser/liberty/LibertyParse.hh"
 
+};
 typedef union LIB_STYPE LIB_STYPE;
 # define LIB_STYPE_IS_TRIVIAL 1
 # define LIB_STYPE_IS_DECLARED 1
@@ -106,7 +123,7 @@ typedef union LIB_STYPE LIB_STYPE;
 
 int lib_parse (yyscan_t yyscanner, ieda::LibertyReader *lib_reader);
 /* "%code provides" blocks.  */
-#line 22 "/home/linxiaoze/parser/parser/liberty/LibertyParse.y" /* yacc.c:1909  */
+#line 36 "/home/taosimin/parser/parser/liberty/LibertyParse.y"
 
 #undef  YY_DECL
 #define YY_DECL int lib_lex(LIB_STYPE *yylval_param, yyscan_t yyscanner, ieda::LibertyReader *lib_reader)
@@ -114,6 +131,6 @@ YY_DECL;
 
 void yyerror(yyscan_t scanner, ieda::LibertyReader *lib_reader, const char *str);
 
-#line 118 "/home/linxiaoze/parser/parser/liberty/LibertyParse.hh" /* yacc.c:1909  */
+#line 135 "/home/taosimin/parser/parser/liberty/LibertyParse.hh"
 
-#endif /* !YY_LIB_HOME_LINXIAOZE_PARSER_PARSER_LIBERTY_LIBERTYPARSE_HH_INCLUDED  */
+#endif /* !YY_LIB_HOME_TAOSIMIN_PARSER_PARSER_LIBERTY_LIBERTYPARSE_HH_INCLUDED  */

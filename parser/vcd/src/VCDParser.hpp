@@ -932,14 +932,14 @@ switch (yytype)
 #if YYDEBUG
     /// The current debugging stream.
     std::ostream& debug_stream () const YY_ATTRIBUTE_PURE;
-    /// Set the current debugging stream.
+    /// BTreeSet the current debugging stream.
     void set_debug_stream (std::ostream &);
 
     /// Type for debugging levels.
     typedef int debug_level_type;
     /// The current debugging level.
     debug_level_type debug_level () const YY_ATTRIBUTE_PURE;
-    /// Set the current debugging level.
+    /// BTreeSet the current debugging level.
     void set_debug_level (debug_level_type l);
 #endif
 

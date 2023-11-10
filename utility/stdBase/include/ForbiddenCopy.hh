@@ -25,7 +25,6 @@
 #pragma once
 
 // Disallow the copy constructor and operator= functions.
-// This should be used in the private declarations for a class.
-#define DISALLOW_COPY_AND_ASSIGN(type_name) \
-  type_name(const type_name&) = delete;     \
-  void operator=(const type_name&) = delete
+#define FORBIDDEN_COPY(class_name)        \
+  class_name(const class_name&) = delete; \
+  void operator=(const class_name&) = delete

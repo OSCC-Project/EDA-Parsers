@@ -1,6 +1,6 @@
-#line 2 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.cc"
+#line 2 "/home/taosimin/parser/parser/liberty/LibertyExprLex.cc"
 
-#line 4 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.cc"
+#line 4 "/home/taosimin/parser/parser/liberty/LibertyExprLex.cc"
 
 #define  YY_INT_ALIGNED short int
 
@@ -657,9 +657,24 @@ static const flex_int16_t yy_chk[62] =
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
-#line 2 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 1 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
+#line 2 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 
+// OpenSTA, Static Timing Analyzer
+// Copyright (c) 2021, Parallax Software, Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 #include "string/Str.hh"
 #include "LibertyExprParse.hh"
@@ -671,10 +686,10 @@ using namespace ieda;
 #define YY_DECL int lib_expr_lex(LIB_EXPR_STYPE *yylval_param, yyscan_t yyscanner, ieda::LibertyExprBuilder *lib_expr_builder)
 #define YYSTYPE LIB_EXPR_STYPE
 
-#line 675 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.cc"
+#line 690 "/home/taosimin/parser/parser/liberty/LibertyExprLex.cc"
 /* %option debug */
 
-#line 678 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.cc"
+#line 693 "/home/taosimin/parser/parser/liberty/LibertyExprLex.cc"
 
 #define INITIAL 0
 #define ESCAPED_STRING 1
@@ -947,10 +962,10 @@ YY_DECL
 		}
 
 	{
-#line 34 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 49 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 
 
-#line 954 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.cc"
+#line 969 "/home/taosimin/parser/parser/liberty/LibertyExprLex.cc"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1005,23 +1020,23 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 36 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 51 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 { return ((int) yytext[0]); }
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 38 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 53 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 { /* I doubt that escaped returns get thru the parser */ }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 40 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 55 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 { BEGIN(ESCAPED_STRING); lib_expr_builder->clearRecordStr(); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 42 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 57 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 {     
     lib_expr_builder->recordStr("\\");
     lib_expr_builder->recordStr(yytext);
@@ -1029,7 +1044,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 47 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 62 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 {
     BEGIN(INITIAL);
     yylval->string = lib_expr_builder->stringCopy(lib_expr_builder->get_record_str());
@@ -1038,7 +1053,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 53 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 68 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 {
     yylval->string = lib_expr_builder->stringCopy(yytext);
     return PORT;
@@ -1046,21 +1061,21 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 58 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 73 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 {}
 	YY_BREAK
 /* Send out of bound characters to parser. */
 case 8:
 YY_RULE_SETUP
-#line 61 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 76 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 { return (int) yytext[0]; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 63 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 78 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 ECHO;
 	YY_BREAK
-#line 1064 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.cc"
+#line 1079 "/home/taosimin/parser/parser/liberty/LibertyExprLex.cc"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(ESCAPED_STRING):
 	yyterminate();
@@ -1940,7 +1955,7 @@ char *yyget_text  (yyscan_t yyscanner)
     return yytext;
 }
 
-/** Set the user-defined data. This data is never touched by the scanner.
+/** BTreeSet the user-defined data. This data is never touched by the scanner.
  * @param user_defined The data to be associated with this scanner.
  * @param yyscanner The scanner object.
  */
@@ -1950,7 +1965,7 @@ void yyset_extra (YY_EXTRA_TYPE  user_defined , yyscan_t yyscanner)
     yyextra = user_defined ;
 }
 
-/** Set the current line number.
+/** BTreeSet the current line number.
  * @param _line_number line number
  * @param yyscanner The scanner object.
  */
@@ -1965,7 +1980,7 @@ void yyset_lineno (int  _line_number , yyscan_t yyscanner)
     yylineno = _line_number;
 }
 
-/** Set the current column.
+/** BTreeSet the current column.
  * @param _column_no column number
  * @param yyscanner The scanner object.
  */
@@ -1980,7 +1995,7 @@ void yyset_column (int  _column_no , yyscan_t yyscanner)
     yycolumn = _column_no;
 }
 
-/** Set the input stream. This does not discard the current
+/** BTreeSet the input stream. This does not discard the current
  * input buffer.
  * @param _in_str A readable stream.
  * @param yyscanner The scanner object.
@@ -2111,7 +2126,7 @@ static int yy_init_globals (yyscan_t yyscanner)
     yyout = NULL;
 #endif
 
-    /* For future reference: Set errno on error, since we are called by
+    /* For future reference: BTreeSet errno on error, since we are called by
      * yylex_init()
      */
     return 0;
@@ -2205,7 +2220,7 @@ void yyfree (void * ptr , yyscan_t yyscanner)
 
 #define YYTABLES_NAME "yytables"
 
-#line 63 "/home/linxiaoze/parser/parser/liberty/LibertyExprLex.l"
+#line 78 "/home/taosimin/parser/parser/liberty/LibertyExprLex.l"
 
 
    void LibertyExprBuilder::parseBegin()
